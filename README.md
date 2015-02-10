@@ -1,4 +1,4 @@
-django-shibboleth-remoteuser
+django-shibboleth-adapter
 ============================
 
 Middleware for using Shibboleth with Django.  Requires Django 1.6 or above.
@@ -7,10 +7,11 @@ Middleware for using Shibboleth with Django.  Requires Django 1.6 or above.
 
 Installation and configuration
 ------
- * Either checkout and run ```python setup.py install``` or install directly from Github with pip:
+ * Install directly from Github with pip:
 
    ```
-   pip install git+https://github.com/???????django-shibboleth-remoteuser.git
+   pip install git@github.com:KonstantinSchubert/django-shibboleth-adapter.git
+
    ```
 
  * In settings.py :

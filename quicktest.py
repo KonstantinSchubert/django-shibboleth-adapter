@@ -48,11 +48,13 @@ class QuickDjangoTest(object):
                 }
             },
             SHIBBOLETH_LOGIN_URL = 'https://your_domain.edu/Shibboleth.sso/Login',
-	    SHIBBOLETH_LOGOUT_URL = 'https://your_domain.edu/Shibboleth.sso/Logout',
-	    LOGIN_URL = '/shib/login/',
+            SHIBBOLETH_LOGOUT_URL = 'https://your_domain.edu/Shibboleth.sso/Logout',
+            LOGIN_URL = '/shib/login/',
             INSTALLED_APPS = self.INSTALLED_APPS + self.apps,
-	    ROOT_URLCONF = 'shib.urls',
+            ROOT_URLCONF = 'shib.urls',
         )
+        import django
+        django.setup()
         from django.test.simple import DjangoTestSuiteRunner
         failures = DjangoTestSuiteRunner().run_tests(self.apps, verbosity=1)
         if failures:
