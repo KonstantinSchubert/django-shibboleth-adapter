@@ -47,9 +47,9 @@ class QuickDjangoTest(object):
                     'PORT': '',
                 }
             },
-            SHIBBOLETH_LOGIN_URL = 'https://your_domain.edu/Shibboleth.sso/Login'
-	    SHIBBOLETH_LOGOUT_URL = 'https://your_domain.edu/Shibboleth.sso/Logout'
-	    LOGIN_URL = '/shib/login/'
+            SHIBBOLETH_LOGIN_URL = 'https://your_domain.edu/Shibboleth.sso/Login',
+	    SHIBBOLETH_LOGOUT_URL = 'https://your_domain.edu/Shibboleth.sso/Logout',
+	    LOGIN_URL = '/shib/login/',
             INSTALLED_APPS = self.INSTALLED_APPS + self.apps,
 	    ROOT_URLCONF = 'shib.urls',
         )
