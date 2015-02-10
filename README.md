@@ -3,8 +3,7 @@ django-shibboleth-remoteuser
 
 Middleware for using Shibboleth with Django.  Requires Django 1.6 or above.
 
-
-TODO: Fix travis
+[![Build Status](https://travis-ci.org/KonstantinSchubert/django-shibboleth-adapter.svg)](https://travis-ci.org/KonstantinSchubert/django-shibboleth-adapter)
 
 Installation and configuration
 ------
