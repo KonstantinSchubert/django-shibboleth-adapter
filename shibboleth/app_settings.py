@@ -26,4 +26,3 @@ LOGOUT_REDIRECT_URL = getattr(settings, 'SHIBBOLETH_LOGOUT_REDIRECT_URL', None)
 #Name of key.  Probably no need to change this.  
 SHIBBOLETH_USER_KEY = getattr(settings, 'SHIBBOLETH_USER_KEY', None)
 
-
