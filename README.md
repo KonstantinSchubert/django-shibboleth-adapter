@@ -17,18 +17,16 @@ Installation and configuration
  * In settings.py :
 
   * Enable the RemoteUserBackend.
-
+  
     ```python
     AUTHENTICATION_BACKENDS += (
       'shibboleth.backends.ShibbolethRemoteUserBackend',
     )
     ```
-
   * Add the Django Shibboleth middleware.
     You must add the django.contrib.auth.middleware.ShibbolethRemoteUserMiddleware to the MIDDLEWARE_CLASSES setting after the django.contrib.auth.middleware.AuthenticationMiddleware.
     For example:
-
-   ```python
+    ```python
     MIDDLEWARE_CLASSES = (
     ...
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -38,9 +36,9 @@ Installation and configuration
     ```
 
   * Define the shibboleth user key. This is the shibboleth attribute that is used to identify the user. It becomes the user name in django.
-  ```python
+    ```python
     SHIBBOLETH_USER_KEY='<shibboleth-attribute>'
-  ```
+    ```
 	
   * Map Shibboleth attributes to Django User model attributes via `SHIBBOLETH_ATTRIBUTE_LIST`. The exsting attributes [can be found in the django documentation](https://docs.djangoproject.com/en/1.7/ref/contrib/auth/#user). You might want to extend them via inheritance. 
 
