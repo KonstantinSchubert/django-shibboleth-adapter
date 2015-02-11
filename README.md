@@ -1,7 +1,7 @@
 django-shibboleth-adapter
 ============================
 
-Middleware for using Shibboleth with Django.  Requires Django 1.6 or above.
+Middleware for using Shibboleth with Django.  Requires Django 1.7 or above.
 
 [![Build Status](https://travis-ci.org/KonstantinSchubert/django-shibboleth-adapter.svg)](https://travis-ci.org/KonstantinSchubert/django-shibboleth-adapter)
 
