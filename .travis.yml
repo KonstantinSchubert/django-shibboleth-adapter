@@ -6,7 +6,6 @@ python:
 # List the versions of Django you'd like to test against
 env:
   - DJANGO_VERSION=1.7
-  - DJANGO_VERSION=1.8
 install: 
    # Travis is currently working on
  - pip install -q Django==$DJANGO_VERSION --use-mirrors

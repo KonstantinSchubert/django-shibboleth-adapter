@@ -42,7 +42,7 @@ Installation and configuration
 	
   * Map Shibboleth attributes to Django User model attributes via `SHIBBOLETH_ATTRIBUTE_LIST`. The exsting attributes [can be found in the django documentation](https://docs.djangoproject.com/en/1.7/ref/contrib/auth/#user). You might want to extend them via inheritance. 
 
-  ```
+    ```
    SHIBBOLETH_ATTRIBUTE_LIST= [
     {
       "shibboleth_key": "<name of shibboleth attribute>",
@@ -58,7 +58,7 @@ Installation and configuration
   ]
   ```
 
-  Note: The Django user object has not many attributes. Note that all shibboleth attributes will be accessible in django via  the `META` dictionary in the `request` object. 
+    Note: The Django user object has not many attributes. Note that all shibboleth attributes will be accessible in django via  the `META` dictionary in the `request` object. 
 
   * Login and Logout url - set this to the login/Logout handler of your shibboleth installation. 
     In most cases, this will be something like:
