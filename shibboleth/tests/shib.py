@@ -9,14 +9,19 @@ from django.test.client import RequestFactory
 from django.test.client import Client
 
 SAMPLE_META = {
-  "persistent-id": 'https://idp2.tu-dresden.de/idp/shibboleth!https://survey.zqa.tu-dresden.de/shibboleth!8LT3gpeasdh/udhXHrgvNey8Xsg=',
-  "entitlement" :  'urn:mace:dir:entitlement:common-lib-terms',
+  "persistent-id": 'testid',
+  "shib_user_email" :  'mail@test.com',
 }
 
 settings.SHIBBOLETH_USER_KEY = "persistent-id"
-settings.SHIBBOLETH_ATTRIBUTE_MAP = {
-   #"entitlement": (True, "entitlement") 
-}
+settings.SHIBBOLETH_ATTRIBUTE_LIST = [
+    {
+      "shibboleth_key": "shib_user_email",
+      "user_attribute" : "email",
+      "required" : True
+    }
+  ]
+  
 
 settings.AUTHENTICATION_BACKENDS += (
     'shibboleth.backends.ShibbolethRemoteUserBackend',
@@ -34,6 +39,13 @@ settings.ROOT_URLCONF = 'shibboleth.urls'
 class AttributesTest(unittest.TestCase):
     def setUp(self):
         self.c = Client()
+
+    def test_inheritance_middleware(self):
+      from shibboleth.middleware import ShibbolethRemoteUserMiddleware
+      middleware = ShibbolethRemoteUserMiddleware()
+      assert hasattr(middleware, "_remove_invalid_user")
+      assert hasattr(middleware, "clean_username")
+
         
     def test_decorator_not_authenticated(self):
         """

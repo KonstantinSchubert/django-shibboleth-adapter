@@ -34,7 +34,6 @@ class QuickDjangoTest(object):
         self.apps = args
         self._tests()
         
-    
     def _tests(self):
         settings.configure(
             DEBUG = True,

@@ -42,21 +42,25 @@ Installation and configuration
     SHIBBOLETH_USER_KEY='<shibboleth-attribute>'
   ```
 	
-  * Map Shibboleth attributes to Django User models. Use this to populate the Djangoe User object with additional Shibboleth attributes, but do NOT overwrite `username`. The attributes must be stated in the form they have in the request.META dictionary, which should be the same as in the configuration of your shibboleth SP.
-    
+  * Map Shibboleth attributes to Django User model attributes via `SHIBBOLETH_ATTRIBUTE_LIST`. The exsting attributes [can be found in the django documentation](https://docs.djangoproject.com/en/1.7/ref/contrib/auth/#user). You might want to extend them via inheritance. 
 
-    The first element of the tuple states if the attribute is required or not. If a reqired element is not found in the request.META dictionary, an exception will be raised.
-    (True, "required_attribute")
-    (False, "optional_attribute).
+  ```
+   SHIBBOLETH_ATTRIBUTE_LIST= [
+    {
+      "shibboleth_key": "<name of shibboleth attribute>",
+      "user_attribute" : "<name of User model attribute>",
+      "required" : <True or false>
+    },
+    {
+      "shibboleth_key": "shib_user_email",
+      "user_attribute" : "email",
+      "required" : True
+    },
+    ...
+  ]
+  ```
 
-    ```python
-    SHIBBOLETH_ATTRIBUTE_MAP = {
-       "shib-given-name": (True, "first_name"),
-	...
-    }
-    ```
-
-
+  Note: The Django user object has not many attributes. Note that all shibboleth attributes will be accessible in django via  the `META` dictionary in the `request` object. 
 
   * Login and Logout url - set this to the login/Logout handler of your shibboleth installation. 
     In most cases, this will be something like:
@@ -101,8 +105,6 @@ If you would like to verify that everything is configured correctly, follow the 
       url(r'^shib/', include('shibboleth.urls', namespace='shibboleth')),
     )
     ```
-
-At this point, the django-shibboleth-remoteuser middleware should be complete.
 
 ##Optional
 ###Template tags

@@ -1,16 +1,13 @@
-from django.db import connection
 from django.contrib.auth.models import User, Permission
 from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import RemoteUserBackend
-from shibboleth.app_settings import SHIB_ATTRIBUTE_MAP
-import re
-
+from shibboleth.app_settings import SHIB_ATTRIBUTE_LIST
 
 
 
 class ShibbolethRemoteUserBackend(RemoteUserBackend):
     """
-    Inherits from and slightly modifies copies https://docs.djangoproject.com/en/1.6/_modules/django/contrib/auth/backends/#RemoteUserBackend
+    Inherits from and slightly modifies https://docs.djangoproject.com/en/1.6/_modules/django/contrib/auth/backends/#RemoteUserBackend
     """
 
 
@@ -47,18 +44,16 @@ class ShibbolethRemoteUserBackend(RemoteUserBackend):
         return user
 
     def configure_user(self,user,meta):
-        # TODO: parase the entries defined from SHIBBOLETH_ATTRIBUTE_MAP and put them from meta into user 
+        for attribute in SHIB_ATTRIBUTE_LIST:
+            try:
+                user.__setattr__(attribute["user_attribute"] ,meta[attribute["shibboleth_key"]])
+            except AttributeError as e:
+                if attribute["required"]:
+                    raise e
         user.set_unusable_password()
         user.save() # necessary?
         return user
 
-    def clean_username(self,value):
-        # find relevant substring of shibboleth attribute
-        regex = re.compile("de/shibboleth\!(.*)=")
-        value = regex.findall(value)[-1]
-        # remove special characters
-        value = ''.join(e for e in value if e.isalnum())
-        return value
 
 class ShibbolethValidationError(Exception):
     pass
