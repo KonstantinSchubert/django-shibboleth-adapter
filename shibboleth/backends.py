@@ -46,7 +46,7 @@ class ShibbolethRemoteUserBackend(RemoteUserBackend):
                 pass
         return user
 
-    def configure_user(user,meta):
+    def configure_user(self,user,meta):
         # TODO: parase the entries defined from SHIBBOLETH_ATTRIBUTE_MAP and put them from meta into user 
         user.set_unusable_password()
         user.save() # necessary?
