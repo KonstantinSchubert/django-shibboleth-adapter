@@ -2,7 +2,6 @@
 language: python
 # List the versions of Python you'd like to test against
 python:
-  - "2.6"
   - "2.7"
 # List the versions of Django you'd like to test against
 env:

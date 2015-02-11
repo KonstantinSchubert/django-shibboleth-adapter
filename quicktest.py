@@ -8,6 +8,7 @@ http://datadesk.latimes.com/posts/2012/06/test-your-django-app-with-travisci/
 import os
 import sys
 from django.conf import settings
+import django
 
 
 class QuickDjangoTest(object):
@@ -53,8 +54,11 @@ class QuickDjangoTest(object):
             INSTALLED_APPS = self.INSTALLED_APPS + self.apps,
             ROOT_URLCONF = 'shib.urls',
         )
-        import django
-        django.setup()
+        try:
+            django.setup()
+        except AttributeError:
+            #before django 1.6 this was not necessary
+            pass
         from django.test.simple import DjangoTestSuiteRunner
         failures = DjangoTestSuiteRunner().run_tests(self.apps, verbosity=1)
         if failures:
