@@ -115,6 +115,8 @@ If you would like to verify that everything is configured correctly, follow the 
        'shibboleth.context_processors.logout_link'
     )
    ```
+   
+   
 ###Persist django session when shibboleth session has ended
  * In many cases the shibboleth-session is managed by a short-lived session cookie, which means that the user is being logged out when the browser closes. There is also a django session, which by default lasts longer. In the default configuration, the django-shibboleth-adapter cancels the django session if it discovers that the shibboleth session has ended. If you want to override this setting, set
     ```
