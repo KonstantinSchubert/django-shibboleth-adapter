@@ -1,0 +1,3 @@
+include license.md
+include README.md
+recursive-include sibboleth/templates *
