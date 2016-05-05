@@ -1,6 +1,8 @@
 The MIT License (MIT)
 
-Copyright (c) 2015 Konstantin Schubert
+Copyright for portions of project django-shibboleth-adapter are held by
+Brown University Library, 2014 as part of project django-shibboleh-remoteuser.
+All other copyright for project django-shibboleth-adapter are held by Konstantin Schubert, 2016.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
