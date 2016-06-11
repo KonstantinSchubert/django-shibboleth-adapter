@@ -4,23 +4,20 @@ django-shibboleth-adapter
 
 Middleware for using Shibboleth with Django.  Requires Django 1.7 or above.
 
-This is a fork of https://github.com/Brown-University-Library/django-shibboleth-remoteuser
+
+
+**This is a fork of https://github.com/Brown-University-Library/django-shibboleth-remoteuser.**
+
 I forked it because, if I remember correctly, I didn't like some design choices with the login redirects.
-However, unless you run into the same problems that I had, you might be happer with the original project which 
-appears to be under active development and might have improved since I forked it.
+
+**This fork is not activley maintained and has some rough edges.** Unless you run into the same problems that I had, you might be happer with the original project. 
+It appears to be under active development.
 
 [![Build Status](https://travis-ci.org/KonstantinSchubert/django-shibboleth-adapter.svg)](https://travis-ci.org/KonstantinSchubert/django-shibboleth-adapter)
 
 Installation and configuration
 ------
- * Install directly from Github with pip:
-
-   ```
-   pip install git@github.com:KonstantinSchubert/django-shibboleth-adapter.git
-
-   ```
-
-  Alternatively, copy the `shibboleth` folder from the repository into your django project folder and add `shibboleth` to your list of installed apps:
+ *  Copy the `shibboleth` folder from the repository into your django project folder and add `shibboleth` to your list of installed apps in your project's `settings.py`:
 
   ```python
   INSTALLED_APPS = (
@@ -30,6 +27,13 @@ Installation and configuration
     ...,
   ) 
   ```
+
+  You can also try to install properly via pip, but be aware I did not properly test this method.
+
+   ```
+   pip install git+https://github.com/KonstantinSchubert/django-shibboleth-adapter.git
+
+   ```
 
  * In settings.py :
 
