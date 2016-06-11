@@ -1,9 +1,13 @@
 django-shibboleth-adapter
 ============================
 
-# Sorry, the pip install is not set up currently, I am planning to fix this soon.
 
 Middleware for using Shibboleth with Django.  Requires Django 1.7 or above.
+
+This is a fork of https://github.com/Brown-University-Library/django-shibboleth-remoteuser
+I forked it because, if I remember correctly, I didn't like some design choices with the login redirects.
+However, unless you run into the same problems that I had, you might be happer with the original project which 
+appears to be under active development and might have improved since I forked it.
 
 [![Build Status](https://travis-ci.org/KonstantinSchubert/django-shibboleth-adapter.svg)](https://travis-ci.org/KonstantinSchubert/django-shibboleth-adapter)
 
@@ -15,6 +19,17 @@ Installation and configuration
    pip install git@github.com:KonstantinSchubert/django-shibboleth-adapter.git
 
    ```
+
+  Alternatively, copy the `shibboleth` folder from the repository into your django project folder and add `shibboleth` to your list of installed apps:
+
+  ```python
+  INSTALLED_APPS = (
+    'django.contrib.admin',
+    ...,
+    'shibboleth',
+    ...,
+  ) 
+  ```
 
  * In settings.py :
 
@@ -44,7 +59,7 @@ Installation and configuration
 	
   * Map Shibboleth attributes to Django User model attributes via `SHIBBOLETH_ATTRIBUTE_LIST`. The exsting attributes [can be found in the django documentation](https://docs.djangoproject.com/en/1.7/ref/contrib/auth/#user). You might want to extend them via inheritance. 
 
-    ```
+    ```python
    SHIBBOLETH_ATTRIBUTE_LIST= [
     {
       "shibboleth_key": "<name of shibboleth attribute>",
